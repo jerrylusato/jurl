@@ -9,21 +9,21 @@ const Url = require('./models/url');
 //middlewares
 app.use(cors());
 app.set('view engine', 'ejs');
-const port = process.env.PORT;
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/public", express.static(`${process.cwd()}/public`));
 
+//routes
 app.get("/", (req, res) => {
   res.render('index');
 });
 
 app.post("/", (req, res) => {
-  console.log("The req url is " + req.url);
+  const reqUrl = req.protocol + '://' + req.get('host') + '/';
   const url = new Url(req.body);
   url
     .save()
     .then((result) => {
-      const newUrl = req.url + result._id;
+      const newUrl = reqUrl + result._id;
       res.render('response', { newUrl });
     })
     .catch((err) => console.log(err));
@@ -37,12 +37,8 @@ app.get("/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//server
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("DB connected");
-    app.listen(port, () => {
-      console.log(`Listening at http://localhost:${port}`);
-    });
-  })
+  .then(() => app.listen(process.env.PORT))
   .catch((err) => console.log(err));

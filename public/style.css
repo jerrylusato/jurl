@@ -12,21 +12,7 @@ main {
   margin-top: 40px;
 }
 
-h3 {
-  margin-top: 30px;
-}
-
-
-
-.user-stories li {
-  margin-bottom: 1em;
-}
-
-a {
-  color: #2574a9;
-}
-
-form {
+.content-box {
   margin: 10px auto;
   padding: 20px;
   max-width: 600px;
@@ -41,6 +27,10 @@ input {
 }
 
 input[type='text'] {
-  width: 220px;
+  width: 300px;
   text-align: center;
+}
+
+a {
+  color: #2574a9;
 }
