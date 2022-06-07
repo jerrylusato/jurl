@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>jURL | Better URL</title>
-    <!-- 
+
+<head>
+  <title>jURL | Better URL</title>
+  <!-- 
       <link
       rel="icon"
       type="image/png"
       href="https://cdn.freecodecamp.org/universal/favicons/favicon-16x16.png"
       />
     -->
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
 
-  <body>
-    <h1>Shortened and/or masked URL.</h1>
-    <main>
-      <section>
-        <div class="content-box">
-          <fieldset>
-            <legend>jURL</legend>
-            <label for="url_output">New URL:</label>
-            <input id="url_output" type="text" name="url" 
-            value=<%= newUrl %> />
-            <input type="submit" value="Copy URL" onclick="copyToClipboard()" />
-          </fieldset>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <p>With &#10084;&#65039; from <a href="https://twitter.com/jerrylusato">Jerry.</a></p>
-    </footer>
+<body>
+  <h1>Shortened and/or masked URL.</h1>
+  <main>
+    <section>
+      <div class="content-box">
+        <fieldset>
+          <legend>jURL</legend>
+          <label for="url_output">New URL:</label>
+          <input id="url_output" type="text" name="url" value=<%=newUrl %> />
+          <input type="submit" value="Copy URL" onclick="copyToClipboard()" />
+        </fieldset>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>With &#10084;&#65039; from <a href="https://twitter.com/jerrylusato">Jerry.</a></p>
+  </footer>
 
-    <script>
-      const copyToClipboard = () => {
-        const copyText = document.getElementById("url_output");
-      
-        /* Select the text field */
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); /* For mobile devices */
-      
-        /* Copy the text inside the text field */
-        navigator.clipboard.writeText(copyText.value);
-        
-        alert("Copied!");
-      };
-    </script>
+  <script>
+    const copyToClipboard = () => {
+      const copyText = document.getElementById("url_output");
 
-  </body>
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+
+      alert("Copied!");
+    };
+  </script>
+
+</body>
+
 </html>

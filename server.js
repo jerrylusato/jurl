@@ -22,7 +22,6 @@ app.post("/", (req, res) => {
     .sort({ _id: -1 })
     .limit(1)
     .then((result) => {
-      console.log(result);
       let index = 0;
       result[0] ? (index = result[0].index + 1) : (index = 1);
       const url = new Url({ index: index, url: req.body.url });
