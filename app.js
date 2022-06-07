@@ -1,21 +1,23 @@
-require("dotenv").config();
-const bodyParser = require("body-parser");
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const app = express();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+const mongoose = require("mongoose")
+const express = require("express")
+const app = express()
+
 const Url = require("./models/url");
 
-//middlewares
-app.use(cors());
-app.set("view engine", "ejs");
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.set("view engine", "ejs")
+app.use(express.static("public"))
+app.use(express.urlencoded({ extended: false }))
 
-//routes
-app.get("/", (req, res) => {
-  res.render("index");
-});
+app.get("/", (req, res) => res.render("index"))
+
+app.get("/:index", (req, res) => {
+  Url.findOne({ index: req.params.index })
+    .then(result => res.redirect(result.url))
+    .catch(err => console.log(err));
+})
 
 app.post("/", (req, res) => {
   Url.find()
@@ -34,17 +36,8 @@ app.post("/", (req, res) => {
         });
     })
     .catch((err) => console.log(err));
-});
+})
 
-app.get("/:index", (req, res) => {
-  Url.findOne({ index: req.params.index })
-    .then((result) => {
-      res.redirect(result.url);
-    })
-    .catch((err) => console.log(err));
-});
-
-//server
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => app.listen(process.env.PORT))
