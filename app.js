@@ -30,15 +30,14 @@ app.post("/", (req, res) => {
       url
         .save()
         .then((result) => {
-          const newUrl =
-            req.protocol + "://" + req.get("host") + "/" + result.index;
-          res.render("response", { newUrl });
+          const newUrl = req.protocol + "://" + req.get("host") + "/" + result.index;
+          return res.render("response", { newUrl });
         });
     })
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 })
 
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => app.listen(process.env.PORT))
-  .catch((err) => console.log(err));
+  .catch(err => console.log(err));

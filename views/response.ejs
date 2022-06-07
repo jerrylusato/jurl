@@ -16,7 +16,7 @@
         <fieldset>
           <legend>jURL</legend>
           <label for="url_output">New URL:</label>
-          <input id="url_output" type="text" name="url" value=<%=newUrl %> />
+          <input id="url_output" type="text" value=<%=newUrl %> />
           <input type="submit" value="Copy URL" onclick="copyToClipboard()" />
         </fieldset>
       </div>
@@ -35,10 +35,10 @@
       copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
       /* Copy the text inside the text field */
-      navigator.clipboard.writeText(copyText.value);
+      document.execCommand("copy");
 
       alert("Copied!");
-    };
+    }
   </script>
 
 </body>
