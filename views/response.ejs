@@ -15,20 +15,20 @@
       <div class="content-box">
         <fieldset>
           <legend>jURL</legend>
-          <label for="url_output">New URL:</label>
-          <input id="url_output" type="text" value=<%=newUrl %> />
+          <label for="new-url">New URL:</label>
+          <input id="new-url" type="text" value=<%=newUrl %> />
           <input type="submit" value="Copy URL" onclick="copyToClipboard()" />
         </fieldset>
       </div>
     </section>
   </main>
   <footer>
-    <p>With &#10084;&#65039; from <a href="https://twitter.com/jerrylusato">Jerry.</a></p>
+    <p>With &#10084;&#65039; , <a href="https://twitter.com/jerrylusato">Jerry.</a></p>
   </footer>
 
   <script>
     const copyToClipboard = () => {
-      const copyText = document.getElementById("url_output");
+      const copyText = document.getElementById("new-url");
 
       /* Select the text field */
       copyText.select();
