@@ -9,22 +9,21 @@
 </head>
 
 <body>
-  <h1>Shortened/masked URL.</h1>
+  <h3>Shortened/masked URL</h3>
   <main>
     <section>
       <div class="content-box">
-        <fieldset>
-          <legend>jURL</legend>
-          <label for="new-url">New URL:</label>
-          <input id="new-url" type="text" value=<%=newUrl %> />
-          <input type="submit" value="Copy URL" onclick="copyToClipboard()" />
-        </fieldset>
+        <label for="new-url">Better URL:</label>
+        <input id="new-url" type="text" value=<%=newUrl %> />
+        <input type="submit" value="Copy URL" onclick="copyToClipboard()" />
       </div>
     </section>
   </main>
   <footer>
-    <span>With &#10084;&#65039;</span><br>
-    <a href="https://twitter.com/jerrylusato" target="_blank">Jerry</a>
+    <div>
+      <span>&#9996;&#65039;</span>
+      <a href="https://twitter.com/jerrylusato" target="_blank">Jerry</a>
+    </div>
   </footer>
 
   <script>
